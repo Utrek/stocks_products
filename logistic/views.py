@@ -6,6 +6,7 @@ from rest_framework.filters import SearchFilter
 from django_filters.rest_framework import DjangoFilterBackend
 from django.http import HttpResponse
 
+
 class ProductViewSet(ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
@@ -13,13 +14,15 @@ class ProductViewSet(ModelViewSet):
     filter_backends = [SearchFilter]
     search_fields = ['^title', '^description',]
 
+
 class StockViewSet(ModelViewSet):
     queryset = Stock.objects.all()
     serializer_class = StockSerializer
     # при необходимости добавьте параметры фильтрации
-    filter_backends = [DjangoFilterBackend,SearchFilter]
+    filter_backends = [DjangoFilterBackend, SearchFilter]
     filterset_fields = ['products',]
     search_fields = ['positions__product__title']
+
 
 def index(request):
     return HttpResponse('Дарова, мы тут разворачиваем и сворачиваем...')

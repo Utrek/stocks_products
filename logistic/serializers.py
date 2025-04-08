@@ -10,7 +10,7 @@ class ProductSerializer(serializers.ModelSerializer):
 
 
 class ProductPositionSerializer(serializers.ModelSerializer):
-    product =  ProductSerializer()
+    product = ProductSerializer()
 
     # настройте сериализатор для позиции продукта на складе
     class Meta:
@@ -20,7 +20,6 @@ class ProductPositionSerializer(serializers.ModelSerializer):
 
 class StockSerializer(serializers.ModelSerializer):
     positions = ProductPositionSerializer(many=True)
-
 
     # настройте сериализатор для склада
     class Meta:
@@ -54,12 +53,9 @@ class StockSerializer(serializers.ModelSerializer):
         for element in positions:
             obj, created = StockProduct.objects.update_or_create(
                 stock=stock,
-                product = element['product'],
-                defaults={'stock': stock, 'product': element['product'], 'quantity':
-                          element['quantity'], 'price': element['price']}
+                product=element['product'],
+                defaults={'stock': stock, 'product': element['product'],
+                          'quantity': element['quantity'],
+                          'price': element['price']}
             )
         return stock
-
-
-
-   
