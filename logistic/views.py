@@ -25,4 +25,4 @@ class StockViewSet(ModelViewSet):
 
 
 def index(request):
-    return HttpResponse('Дарова, мы тут разворачиваем и сворачиваем...')
+    return HttpResponse('Сидим с бобром за столом\nВдвоём, на ужин готовим полено.\nДавай поговорим, бобер,\nО том, что наболело.')
