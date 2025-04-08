@@ -4,7 +4,7 @@ from logistic.models import Product, Stock
 from logistic.serializers import ProductSerializer, StockSerializer
 from rest_framework.filters import SearchFilter
 from django_filters.rest_framework import DjangoFilterBackend
-
+from django.http import HttpResponse
 
 class ProductViewSet(ModelViewSet):
     queryset = Product.objects.all()
@@ -20,3 +20,6 @@ class StockViewSet(ModelViewSet):
     filter_backends = [DjangoFilterBackend,SearchFilter]
     filterset_fields = ['products',]
     search_fields = ['positions__product__title']
+
+def index(request):
+    return HttpResponse('Дарова, мы тут разворачиваем и сворачиваем...')
