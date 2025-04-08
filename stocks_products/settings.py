@@ -88,7 +88,7 @@ DATABASES = {
         'NAME': 'stocks_products1',
         'HOST': '127.0.0.1',
         'PORT': '5432',
-        'USER': 'utrek',
+        'USER': 'postgres',
         'PASSWORD': '0956',
 
 
